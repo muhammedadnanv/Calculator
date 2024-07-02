@@ -1,35 +1,35 @@
 <template>
-  <div class="hello">
-    <h1>My name is Muhammed Adnan</h1>
-    <p>I am a self-learned developer.</p>
-    <a href="https://muhammedadnanavv.vercel.app">Visit Now</a>
-  </div>
-  
-  <div id="intro">
-    <h3>If you are a self-learner, you can learn and build projects!</h3>
-  </div>
-  
-  <div id="social-media">
-    <h3>Follow me on Social Media</h3>
-    <div class="social-buttons">
-      <button class="social-button"><a href="https://github.com/muhammedadnanv">Github</a></button>
-      <button class="social-button"><a href="https://www.facebook.com/profile.php?id=100084139741037">Facebook</a></button>
-      <button class="social-button"><a href="https://www.linkedin.com/in/muhammedadnanvv/">LinkedIn</a></button>
+  <h1 style="color: black;">{{ channel }}</h1>
+  <div class="calculator">
+    <h1 style="color:white"> {{ lastnamd }}</h1>
+    <div class="display">
+      <input type="text" v-model="displayValue" readonly>
     </div>
-  </div>
-  
-  <div id="contact">
-    <h1>Contact me</h1>
-    <div class="contact-form">
-      <form action="https://formbold.com/s/9XqPy" method="post">
-        <label for="name">Enter Name</label><br>
-        <input type="text" id="name" name="name"><br>
-        
-        <label for="email">Enter Email</label><br>
-        <input type="email" id="email" name="email"><br><br>
-        
-        <input type="submit" value="Submit">
-      </form>
+    <div class="buttons">
+      <button @click="clearDisplay()" class="btn btn-clear">C</button>
+      <button @click="appendToDisplay('(')" class="btn">(</button>
+      <button @click="appendToDisplay(')')" class="btn">)</button>
+      <button @click="appendToDisplay('/')" class="btn btn-operator">÷</button>
+      
+      <button @click="appendToDisplay('7')" class="btn">7</button>
+      <button @click="appendToDisplay('8')" class="btn">8</button>
+      <button @click="appendToDisplay('9')" class="btn">9</button>
+      <button @click="appendToDisplay('*')" class="btn btn-operator">×</button>
+      
+      <button @click="appendToDisplay('4')" class="btn">4</button>
+      <button @click="appendToDisplay('5')" class="btn">5</button>
+      <button @click="appendToDisplay('6')" class="btn">6</button>
+      <button @click="appendToDisplay('-')" class="btn btn-operator">-</button>
+      
+      <button @click="appendToDisplay('1')" class="btn">1</button>
+      <button @click="appendToDisplay('2')" class="btn">2</button>
+      <button @click="appendToDisplay('3')" class="btn">3</button>
+      <button @click="appendToDisplay('+')" class="btn btn-operator">+</button>
+      
+      <button @click="appendToDisplay('0')" class="btn">0</button>
+      <button @click="appendToDisplay('.')" class="btn">.</button>
+      <button @click="deleteLastChar()" class="btn btn-delete">←</button>
+      <button @click="calculateResult()" class="btn btn-equal">=</button>
     </div>
   </div>
 </template>
@@ -39,67 +39,99 @@ export default {
   name: 'app',
   data() {
     return {
-      // Your data properties if any
+      displayValue: '',
+      lastnamd:'Casino',
+      channel:'WELCOME TO CASINO'
+
     };
+  },
+  methods: {
+    appendToDisplay(value) {
+      this.displayValue += value;
+    },
+    clearDisplay() {
+      this.displayValue = '';
+    },
+    deleteLastChar() {
+      this.displayValue = this.displayValue.slice(0, -1);
+    },
+    calculateResult() {
+      try {
+        this.displayValue = eval(this.displayValue);
+      } catch (error) {
+        this.displayValue = 'Error';
+      }
+    }
   }
 };
 </script>
 
 <style scoped>
-/* Scoped styles for this component only */
-
-.hello {
-  text-align: center;
-  margin-bottom: 20px;
-}
-
-.intro {
-  text-align: center;
-  margin-bottom: 40px;
-}
-
-#social-media {
-  text-align: center;
-  margin-bottom: 40px;
-}
-
-.social-buttons {
-  margin-top: 20px;
-}
-
-.social-button {
-  background-color: black;
-  color: gold; /* Adjusted to golden color */
-  border: none;
-  padding: 10px 20px;
-  margin-right: 10px;
-  cursor: pointer;
-}
-
-.contact-form {
-  background-color: gold; /* Adjusted to golden color */
-  color: black;
+.calculator {
+  width: 300px;
+  margin: 50px auto;
+  background-color: #333;
   padding: 20px;
-  margin-top: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+  font-family: 'Arial', sans-serif;
 }
 
-.contact-form label {
+.display {
   margin-bottom: 10px;
 }
 
-.contact-form input[type="text"],
-.contact-form input[type="email"] {
+.display input {
   width: 100%;
-  padding: 10px;
-  margin-bottom: 10px;
-  border: 1px solid black; /* Added border for input fields */
+  padding: 15px;
+  font-size: 1.8rem;
+  text-align: right;
+  background-color: #666;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5);
+  outline: none;
 }
 
-.contact-form input[type="submit"] {
-  background-color: black;
-  color: gold; /* Adjusted to golden color */
+.buttons {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+}
+
+.btn {
+  padding: 20px;
+  font-size: 1.2rem;
+  background-color: #555;
+  color: white;
   border: none;
-  padding: 10px 20px;
+  border-radius: 5px;
   cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+  background-color: #777;
+}
+
+.btn:active {
+  background-color: #444;
+}
+
+.btn-clear {
+  grid-column: span 2;
+}
+
+.btn-operator {
+  background-color: #ff9500;
+}
+
+.btn-delete {
+  background-color: #ff3b30;
+}
+
+.btn-equal {
+  background-color: #4cd964;
 }
 </style>
