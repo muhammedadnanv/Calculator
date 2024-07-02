@@ -1,66 +1,105 @@
 <template>
   <div class="hello">
-    
-    <h1>My name is   Muhammed Adnan</h1>
-    <p>
-    I am a self leanered developer  
-
-      <a href="ttps://muhammedadnanavv.vercel.app">Visit Now</a>.
-    </p>
-    </div>
-    <div id="fuck">
- <h3>  How Are You,  if you Are a Self learner you Can learn it And bulid Projects  </h3>
-    </div>
-<div id="Socialmedia">
-<h3>Follow me on Social Media</h3>
-   <button style="background-color: black; color: aquamarine;"><a href="https://github.com/muhammedadnanv">Github</a></button>
-    <br><br>
-  <button style="background-color: black; color: aquamarine;"><a href="https://www.facebook.com/profile.php?id=100084139741037">Facebook</a></button>
-    <br><br>
-    <button style="background-color: black; color: aquamarine;"><a href="https://www.linkedin.com/in/muhammedadnanvv/">Linkedin</a></button>
-    <br>
-<div>
-  <h1>Contact me </h1>
-  <div style="background-color: aquamarine; color:black; cursor: auto;" element-loading-text="u4">
+    <h1>My name is Muhammed Adnan</h1>
+    <p>I am a self-learned developer.</p>
+    <a href="https://muhammedadnanavv.vercel.app">Visit Now</a>
+  </div>
   
-  <form action="https://formbold.com/s/9XqPy" method="post">
-    <label for="text">Enter Name</label>
-    <br>
-<input type="text" name="Enter Your name ">
-<br>
-<label for="email">Enter Email</label>
-<br>
-<input type="email" name="Enter your email">
-<br>
-<br>
-<input style="background-color: black; color:greenyellow;" type="submit" value="summit">
-  </form>
-</div>
-</div>
-
-</div>
+  <div id="intro">
+    <h3>If you are a self-learner, you can learn and build projects!</h3>
+  </div>
+  
+  <div id="social-media">
+    <h3>Follow me on Social Media</h3>
+    <div class="social-buttons">
+      <button class="social-button"><a href="https://github.com/muhammedadnanv">Github</a></button>
+      <button class="social-button"><a href="https://www.facebook.com/profile.php?id=100084139741037">Facebook</a></button>
+      <button class="social-button"><a href="https://www.linkedin.com/in/muhammedadnanvv/">LinkedIn</a></button>
+    </div>
+  </div>
+  
+  <div id="contact">
+    <h1>Contact me</h1>
+    <div class="contact-form">
+      <form action="https://formbold.com/s/9XqPy" method="post">
+        <label for="name">Enter Name</label><br>
+        <input type="text" id="name" name="name"><br>
+        
+        <label for="email">Enter Email</label><br>
+        <input type="email" id="email" name="email"><br><br>
+        
+        <input type="submit" value="Submit">
+      </form>
+    </div>
+  </div>
 </template>
 
 <script>
- export default{
-  name
- }
+export default {
+  name: 'app',
+  data() {
+    return {
+      // Your data properties if any
+    };
+  }
+};
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-h3 {
-  margin: 40px 0 0;
+/* Scoped styles for this component only */
+
+.hello {
+  text-align: center;
+  margin-bottom: 20px;
 }
-ul {
-  list-style-type: none;
-  padding: 0;
+
+.intro {
+  text-align: center;
+  margin-bottom: 40px;
 }
-li {
-  display: inline-block;
-  margin: 0 10px;
+
+#social-media {
+  text-align: center;
+  margin-bottom: 40px;
 }
-a {
-  color: #42b983;
+
+.social-buttons {
+  margin-top: 20px;
+}
+
+.social-button {
+  background-color: black;
+  color: gold; /* Adjusted to golden color */
+  border: none;
+  padding: 10px 20px;
+  margin-right: 10px;
+  cursor: pointer;
+}
+
+.contact-form {
+  background-color: gold; /* Adjusted to golden color */
+  color: black;
+  padding: 20px;
+  margin-top: 20px;
+}
+
+.contact-form label {
+  margin-bottom: 10px;
+}
+
+.contact-form input[type="text"],
+.contact-form input[type="email"] {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid black; /* Added border for input fields */
+}
+
+.contact-form input[type="submit"] {
+  background-color: black;
+  color: gold; /* Adjusted to golden color */
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
 }
 </style>
